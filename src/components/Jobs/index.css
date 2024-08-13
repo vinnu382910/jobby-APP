@@ -1,0 +1,92 @@
+.Job-container {
+  min-height: 100vh;
+  background-color: black;
+}
+.jobs-main-cont {
+  padding: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #fff;
+}
+
+.jobs-list-cont {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.search-input {
+  margin-left: 40px;
+  background-color: transparent;
+  border-color: aliceblue;
+  width: 280px;
+  height: 30px;
+  border: 1px solid #fff;
+  padding-left: 10px;
+  color: #fff;
+}
+
+.list-cont {
+  list-style: none;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 8px;
+  padding-left: 16px;
+  border: 2px solid #fff;
+  height: 40px;
+}
+
+.search-input {
+  background-color: transparent;
+  color: #fff;
+  font-family: 'Roboto';
+  font-size: 14px;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  flex-grow: 1;
+  margin-left: 0px;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  color: black;
+}
+
+.search-btn {
+  background-color: #7e858e;
+  border-color: transparent;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 38px;
+  width: 50px;
+  cursor: pointer;
+  margin-right: 1px;
+}
+
+.failure-cont {
+  height: 100vh;
+  width: 100%;
+  margin-left: 30%;
+}
+
+.retry-btn {
+  padding: 10px;
+  background-color: #4f46e5;
+  color: #fff;
+  font-family: Roboto;
+  font-weight: bold;
+  border-color: transparent;
+  width: 80px;
+  border-radius: 5px;
+  cursor: pointer;
+}

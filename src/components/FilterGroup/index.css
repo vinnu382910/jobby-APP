@@ -1,0 +1,38 @@
+.filter-heading {
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.line {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.list-cont {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.label-cont {
+  display: flex;
+  flex-direction: row;
+}
+
+.label-item {
+  margin-bottom: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+}
+
+.label-item2 {
+  border-radius: 50px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+}

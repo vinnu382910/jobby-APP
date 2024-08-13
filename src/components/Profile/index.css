@@ -1,0 +1,61 @@
+.profile-cont {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/profile-bg.png');
+  background-size: cover;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding: 25px;
+  padding-top: 30px;
+  color: black;
+  width: 350px;
+  height: 230px;
+}
+
+.profile-img {
+  height: 50px;
+  width: 50px;
+}
+
+.name {
+  color: #6366f1;
+  font-family: Roboto;
+  font-weight: bold;
+}
+
+.bio {
+  color: #2c364c;
+  font-family: Roboto;
+}
+
+.line {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+.primedeals-loader-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+}
+
+.failure-cont {
+  height: 250px;
+  width: 250px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.retry-btn {
+  padding: 10px;
+  background-color: #4f46e5;
+  color: #fff;
+  font-family: Roboto;
+  font-weight: bold;
+  border-color: transparent;
+  width: 80px;
+  border-radius: 5px;
+  cursor: pointer;
+}
