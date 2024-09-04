@@ -32,8 +32,12 @@ const Header = props => {
         </Link>
       </li>
       <li>
-        <MdHome className="nav-icon" />
-        <MdWork className="nav-icon" />
+        <Link to="/" className="nav-link">
+          <MdHome className="nav-icon" />
+        </Link>
+        <Link to="/jobs" className="nav-link">
+          <MdWork className="nav-icon" />
+        </Link>
         <button className="logout-btn" type="button" onClick={onClickLogout}>
           Logout
         </button>
