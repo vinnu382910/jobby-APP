@@ -1,43 +1,49 @@
-import {BsFillStarFill, BsBriefcaseFill} from 'react-icons/bs'
-import {MdLocationOn} from 'react-icons/md'
+import {AiFillStar} from 'react-icons/ai'
+import {IoLocationSharp} from 'react-icons/io5'
+import {BsFillBriefcaseFill} from 'react-icons/bs'
 import './index.css'
 
-const SimilarProductItem = props => {
-  const {productDetails} = props
-  const item = productDetails
+const SimilarJobCard = props => {
+  const {jobDetails} = props
+  const {
+    companyLogoUrl,
+    employmentType,
+    jobDescription,
+    location,
+    rating,
+    title,
+  } = jobDetails
 
   return (
-    <li key={item.id} className="job-item-card2">
-      <div className="company-container">
+    <li className="similar-job-card">
+      <div className="logo-title-container-card">
         <img
-          className="companyLogo"
-          src={item.companyLogoUrl}
+          src={companyLogoUrl}
           alt="similar job company logo"
+          className="company-logo-card"
         />
-        <div>
-          <h1 className="company-title">{item.title}</h1>
-          <div className="company-container">
-            <BsFillStarFill className="star" />
-            <p className="rating">{item.rating}</p>
+        <div className="title-rating-container-card">
+          <h1 className="job-title-card">{title}</h1>
+          <div className="rating-container-card">
+            <AiFillStar className="star-icon-card" />
+            <p className="rating-number-card">{rating}</p>
           </div>
         </div>
       </div>
-      <div className="company-info">
-        <div className="company-details">
-          <MdLocationOn className="location" />
-          <p className="place">{item.location}</p>
-          <BsBriefcaseFill className="type-icon" />
-          <p className="place">{item.employmentType}</p>
+      <h1 className="description-heading-card">Description</h1>
+      <p className="job-description-card">{jobDescription}</p>
+      <div className="location-package-container-card">
+        <div className="icon-type-container-card">
+          <IoLocationSharp className="type-icon" />
+          <p className="type-text">{location}</p>
         </div>
-        <p className="salary">{item.packagePerAnnum}</p>
-      </div>
-      <hr className="line1" />
-      <div>
-        <h1 className="job-description">Description</h1>
-        <p className="job-description-text">{item.jobDescription}</p>
+        <div className="icon-type-container-card">
+          <BsFillBriefcaseFill className="type-icon" />
+          <p className="type-text">{employmentType}</p>
+        </div>
       </div>
     </li>
   )
 }
 
-export default SimilarProductItem
+export default SimilarJobCard

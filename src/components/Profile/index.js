@@ -1,6 +1,6 @@
-import Cookies from 'js-cookie'
-import {Component} from 'react'
 import Loader from 'react-loader-spinner'
+
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import './index.css'
 
 const apiStatusConstants = {
@@ -10,99 +10,53 @@ const apiStatusConstants = {
   inProgress: 'IN_PROGRESS',
 }
 
-class Profile extends Component {
-  state = {profileDetails: [], apiStatus: apiStatusConstants.initial}
-
-  componentDidMount() {
-    this.getProfileDetails()
-  }
-
-  getProfileDetails = async () => {
-    this.setState({
-      apiStatus: apiStatusConstants.inProgress,
-    })
-
-    const jwtToken = Cookies.get('jwt_token')
-
-    const apiUrl = 'https://apis.ccbp.in/profile'
-    const options = {
-      headers: {
-        Authorization: `Bearer ${jwtToken}`,
-      },
-      method: 'GET',
-    }
-
-    const response = await fetch(apiUrl, options)
-    console.log(response)
-    if (response.ok === true) {
-      const fetchedData = await response.json()
-      const profileDetails = fetchedData.profile_details
-      const updatedData = {
-        name: profileDetails.name,
-        profileImageUrl: profileDetails.profile_image_url,
-        shortBio: profileDetails.short_bio,
-      }
-      this.setState({
-        profileDetails: updatedData,
-        apiStatus: apiStatusConstants.success,
-      })
-    }
-    if (response.status === 401) {
-      this.setState({
-        apiStatus: apiStatusConstants.failure,
-      })
-    }
-  }
-
-  renderProfileDetails = () => {
-    const {profileDetails} = this.state
+const ProfileDetails = props => {
+  const renderProfile = () => {
+    const {profileDetails} = props
     const {name, profileImageUrl, shortBio} = profileDetails
+
     return (
-      <div>
-        <div className="profile-cont">
-          <img src={profileImageUrl} alt="profile" className="profile-img" />
-          <h1 className="name">{name}</h1>
-          <p className="bio">{shortBio}</p>
-        </div>
-        <hr className="line" />
+      <div className="profile-details-container">
+        <img src={profileImageUrl} alt="profile" className="profile-image" />
+        <h1 className="profile-name">{name}</h1>
+        <p className="profile-bio">{shortBio}</p>
       </div>
     )
   }
 
-  renderPrimeDealsFailureView = () => (
-    <>
-      <div className="failure-cont">
+  const renderProfileFailure = () => {
+    const {getProfileDetails} = props
+    return (
+      <div className="profile-failure-container">
         <button
-          className="retry-btn"
+          className="retry-button"
           type="button"
-          onClick={this.getProfileDetails}
+          onClick={getProfileDetails}
         >
           Retry
         </button>
       </div>
-      <hr className="line" />
-    </>
-  )
+    )
+  }
 
-  renderLoadingView = () => (
-    <div className="primedeals-loader-container">
-      <Loader type="ThreeDots" color="#0b69ff" height="50" width="50" />
+  const renderProfileLoader = () => (
+    <div className="loader-container-profile" data-testid="loader">
+      <Loader type="ThreeDots" color="#ffffff" height="50" width="50" />
     </div>
   )
 
-  render() {
-    const {apiStatus} = this.state
-    switch (apiStatus) {
-      case apiStatusConstants.success:
-        return this.renderProfileDetails()
-      case apiStatusConstants.failure:
-        return this.renderPrimeDealsFailureView()
-      case apiStatusConstants.inProgress:
-        return this.renderLoadingView()
-      default:
-        return null
-    }
+  const {profileApiStatus} = props
+
+  switch (profileApiStatus) {
+    case apiStatusConstants.inProgress:
+      return renderProfileLoader()
+    case apiStatusConstants.success:
+      return renderProfile()
+    case apiStatusConstants.failure:
+      return renderProfileFailure()
+    default:
+      return null
   }
 }
 
-export default Profile
+export default ProfileDetails
